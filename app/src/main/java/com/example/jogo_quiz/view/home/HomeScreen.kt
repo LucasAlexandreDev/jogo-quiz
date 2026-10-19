@@ -1,11 +1,12 @@
 package com.example.jogo_quiz.view.home
 
+import android.R.attr.onClick
+import androidx.compose.foundation.BorderStroke
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxSize
-import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.width
@@ -21,10 +22,11 @@ import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import androidx.navigation.NavController
 import com.example.jogo_quiz.R
 
 @Composable
-fun HomeScreen(modifier: Modifier){
+fun HomeScreen(modifier: Modifier, navController: NavController){
 
     // Coluna Geral dos elementos
     Column(
@@ -37,6 +39,7 @@ fun HomeScreen(modifier: Modifier){
 
     ) {
 
+        // Imagem da Logo do QUIZ
         Image(
             painter = painterResource(R.drawable.quiz),
             contentDescription = "logo Quiz",
@@ -53,12 +56,15 @@ fun HomeScreen(modifier: Modifier){
             fontWeight = FontWeight.Bold
         )
 
+        // Botão de COMEÇAR
         Button(
-            onClick = {},
+            onClick = { navController.navigate("quiz")},
 
             colors = ButtonDefaults.buttonColors(
                 containerColor = colorResource(id = R.color.amareloApp)
             ),
+
+            border = BorderStroke(2.dp, Color.Black) ,
 
             modifier = Modifier.width(300.dp)
 
@@ -70,7 +76,5 @@ fun HomeScreen(modifier: Modifier){
                 fontSize = 25.sp
             )
         }
-
-
     }
 }
